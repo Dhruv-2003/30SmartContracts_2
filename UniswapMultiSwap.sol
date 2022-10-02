@@ -4,7 +4,7 @@ pragma solidity ^0.8.13;
 /// Swapping Multiple tokens with help of Uniswap Router V2
 /// We just add the token in the path to be able to swap multiple times in the pre defined order
 
-contract UniswapV2Swap {
+contract UniswapV2MultiSwap {
     IUniswapV2Router private router;
     IERC20 private token1;
     IERC20 private token2;
