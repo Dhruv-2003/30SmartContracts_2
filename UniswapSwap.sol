@@ -55,7 +55,7 @@ contract UniswapV2Swap {
         );
 
         // returns the amount
-        // amounts[0] = WETH amount, amounts[1] = DAI amount
+        // amounts[0] = token1 amount, amounts[1] = token2 amount
         return amounts[1];
     }
 
@@ -83,7 +83,7 @@ contract UniswapV2Swap {
             block.timestamp
         );
 
-        // Refund WETH to msg.sender
+        // Refund token1 to msg.sender
         if (amounts[0] < amountInMax) {
             token1.transfer(msg.sender, amountInMax - amounts[0]);
         }
