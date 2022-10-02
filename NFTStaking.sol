@@ -1,9 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/token/ERC721/ERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/access/Ownable.sol";
-
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/token/ERC721/utils/ERC721Holder.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/token/ERC20/ERC20.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/token/ERC721/IERC721.sol";
@@ -11,8 +9,10 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contr
 // After minting the NFT , we need to approve the nft to be able to transfer this nft to other
 // then the token contract can transfer the nft while staking and unstaking
 // user can later setApproval as false to cancel the approval for the token contract
+// we are rewarding a token for the staking
+
 contract MyToken is ERC20, Ownable, ERC721Holder {
-    // struct for the NFT , containing tokenId and when it arrived
+    // struct for the NFT , containing tokenId and when it arrived and other details
     struct NFT {
         address user;
         uint256 start;
@@ -20,6 +20,7 @@ contract MyToken is ERC20, Ownable, ERC721Holder {
     }
 
     // reward rate per second to be awarded
+    /// 10 tokens per day will be rewarded for the user
     uint256 public rewardRate = (10 * 10**decimals()) / 1 days;
 
     // mapping of address of the user to the staked NFT
@@ -32,6 +33,7 @@ contract MyToken is ERC20, Ownable, ERC721Holder {
     }
 
     // to stake the nft with the tokenId we want
+    // Stake
     function stake(uint256 _tokenId) external {
         require(!stakedNFTs[_tokenId].staked, "The NFT is already staked ");
         nftCollection.safeTransferFrom(msg.sender, address(this), _tokenId);
@@ -43,9 +45,8 @@ contract MyToken is ERC20, Ownable, ERC721Holder {
 
     //  to calculate the rewards earned for particular tokenId and return the rewardAmount
     function rewardsEarned(uint256 _tokenId) public returns (uint256) {
-        uint256 _start = stakedNFTs[_stokenId].start;
+        uint256 _start = stakedNFTs[_tokenId].start;
         uint256 timeElapsed = block.timestamp - _start;
-
         return timeElapsed * rewardRate;
     }
 
@@ -64,14 +65,5 @@ contract MyToken is ERC20, Ownable, ERC721Holder {
         uint256 amount = rewardsEarned(_tokenId);
 
         _mint(msg.sender, amount);
-    }
-    /// 10 tokens per day will be rewarded for the user
-}
-
-contract MyNFT is ERC721, Ownable {
-    constructor() ERC721("MyNFT", "NFT") {}
-
-    function safeMint(address to, uint256 tokenId) public onlyOwner {
-        _safeMint(to, tokenId);
     }
 }
