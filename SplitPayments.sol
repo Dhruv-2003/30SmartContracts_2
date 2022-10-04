@@ -18,6 +18,7 @@ contract SplitPay is Ownable {
         noOfOwner = _nuOfOwner;
     }
 
+    // to manually withdraw any funds available in the contract
     function withdraw() external {
         uint256 amount = address(this).balance;
         uint256 amountPer = amount / noOfOwner;
@@ -30,7 +31,9 @@ contract SplitPay is Ownable {
     }
 
     /// @dev Function to receive Ether. msg.data must be empty
+    /// the pay recieved is automatically sent to the setAddresses at the time of deployment
     receive() external payable {
+        emit payRecieved(msg.sender, msg.value);
         uint256 amount = msg.value;
         uint256 amountPer = amount / noOfOwner;
         for (uint256 i = 0; i < noOfOwner; i++) {
@@ -39,7 +42,6 @@ contract SplitPay is Ownable {
             require(success, "request not completed");
             emit withdrawl(_to, amountPer);
         }
-        emit payRecieved(msg.sender, msg.value);
     }
 
     /// @dev Fallback function is called when msg.data is not empty
