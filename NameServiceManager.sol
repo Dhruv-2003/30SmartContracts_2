@@ -120,4 +120,12 @@ contract Domains {
         (bool success, ) = msg.sender.call{value: amount}("");
         require(success, "Failed to withdraw Matic");
     }
+
+    /// @dev Function to receive Ether. msg.data must be empty
+    receive() external payable {
+        emit received(msg.sender, msg.value);
+    }
+
+    /// @dev Fallback function is called when msg.data is not empty
+    fallback() external payable {}
 }
