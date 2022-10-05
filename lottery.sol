@@ -58,7 +58,7 @@ contract Lottery is Ownable {
         return players;
     }
 
-    function getLastWinner() public view retunrs(address) {
-        return lastWinner;
+    function getPastWinner(uint256 _id) public view retunrs(address) {
+        return lotteryWinner[_id];
     }
 }
