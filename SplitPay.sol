@@ -66,7 +66,7 @@ contract SplitPay is Ownable {
 
     /// @dev Function to receive Ether. msg.data must be empty
     receive() external payable {
-        emit recieved(msg.sender, msg.value);
+        emit Recieved(msg.sender, msg.value);
     }
 
     /// @dev Fallback function is called when msg.data is not empty
