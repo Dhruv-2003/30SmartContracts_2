@@ -51,6 +51,7 @@ contract Stream {
 
     modifier onlyOwner() {
         require(msg.sender == owner, "Not authorized");
+        _;
     }
 
     /// @notice Add account to allow list.
