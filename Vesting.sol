@@ -3,6 +3,8 @@ pragma solidity ^0.8.10;
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/utils/SafeERC20.sol";
 
+/// Checked and tested
+
 /// Vesting contract can help in the vesting assets over a time duration
 /// Follows vesting schedule , which releases the amount according to the time passed from the start of vesting
 

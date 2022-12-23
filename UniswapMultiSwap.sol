@@ -1,6 +1,8 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+/// Checked and tested
+
 /// Swapping Multiple tokens with help of Uniswap Router V2
 /// We just add the token in the path to be able to swap multiple times in the pre defined order
 

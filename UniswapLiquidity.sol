@@ -1,16 +1,24 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+// Checked and Tested
+
 // To add and remove Liquidity for a certain pair of tokens
 
 contract UniswapLiquidity {
     /// factory contract address for maintaining the pair of tokens
-    address private constant FACTORY =
-        0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
+    address private FACTORY;
 
     /// router contract address for adding and removing the liquidity
-    address private constant ROUTER =
-        0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D;
+    address private ROUTER;
+
+    // Factory = 0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f;
+    // Router = 0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D
+
+    constructor(address UNISWAP_V2_ROUTER, address UNISWAP_FACTORY) {
+        FACTORY = UNISWAP_FACTORY;
+        ROUTER = UNISWAP_V2_ROUTER;
+    }
 
     function addLiquidity(
         address _tokenA,
