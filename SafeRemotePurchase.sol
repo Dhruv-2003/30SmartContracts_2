@@ -1,11 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
-// seller deploy the contracts and send in the funds
-// agreement and send in funds
-// item shipped
-// buyer confirms the recieve
-//  funds released to the seller and contract is destroyed
+//-seller deploy the contracts and send in the funds
+//-agreement and send in funds
+//-item shipped
+//-Buyer confirms the recieve
+//-Funds released to the seller and contract is destroyed
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract safeRemotePurchase is Ownable {

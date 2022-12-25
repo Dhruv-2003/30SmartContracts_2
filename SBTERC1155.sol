@@ -7,6 +7,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
 /// ERC1155 contract to be made soulbound token
+/// SBTs are tokens which are once minted can not be transferred , i.e. only mint and burn is allowed
 
 contract SBTERC1155 is ERC1155, ERC1155Supply, Ownable {
     // _paused is used to pause the contract in case of an emergency

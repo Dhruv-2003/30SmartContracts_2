@@ -20,6 +20,7 @@ error Unauthorized();
 
 // cfa is Constant Flow Agreement
 // the token that can be streamed should be streamable , or we have to wrap the tokens to make them flow compatible
+// ACL is to be given to the contract to act as a operator
 
 contract Stream {
     /// @notice Owner.

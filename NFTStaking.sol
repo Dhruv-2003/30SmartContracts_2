@@ -9,7 +9,7 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contr
 // After minting the NFT , we need to approve the nft to be able to transfer this nft to other
 // then the token contract can transfer the nft while staking and unstaking
 // user can later setApproval as false to cancel the approval for the token contract
-// we are rewarding a token for the staking
+// we are rewarding a token for staking the NFT in the contract
 
 contract MyToken is ERC20, Ownable, ERC721Holder {
     // struct for the NFT , containing tokenId and when it arrived and other details
@@ -32,7 +32,7 @@ contract MyToken is ERC20, Ownable, ERC721Holder {
         nftCollection = IERC721(_nftCollection);
     }
 
-    // to stake the nft with the tokenId we want
+    ///@dev to stake the nft with the tokenId we want
     // Stake
     function stake(uint256 _tokenId) external {
         require(!stakedNFTs[_tokenId].staked, "The NFT is already staked ");
@@ -43,14 +43,14 @@ contract MyToken is ERC20, Ownable, ERC721Holder {
         nft.staked = true;
     }
 
-    //  to calculate the rewards earned for particular tokenId and return the rewardAmount
+    ///@dev  to calculate the rewards earned for particular tokenId and return the rewardAmount
     function rewardsEarned(uint256 _tokenId) public returns (uint256) {
         uint256 _start = stakedNFTs[_tokenId].start;
         uint256 timeElapsed = block.timestamp - _start;
         return timeElapsed * rewardRate;
     }
 
-    // to unstake the nft with the tokenId and get the nft back ,  also mint the rewarded token to the user
+    ///@dev to unstake the nft with the tokenId and get the nft back ,  also mint the rewarded token to the user
     function unStake(uint256 _tokenId) external {
         require(
             stakedNFTs[_tokenId].user == msg.sender,

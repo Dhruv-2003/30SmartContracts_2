@@ -1,6 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+// TASK
+// Marketplace to handle manage the listing and purchase of an NFT
+// Create a listing and approve the contract to transfer
+// Manage and update the listing
+// Create bids and manage them
+// Direct purchase of NFT
+
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 
 contract NFTMarketplace {
@@ -80,6 +87,7 @@ contract NFTMarketplace {
         uint256 bidPrice
     );
 
+    /// @dev Create the listing for full purchase and get approval to transfer
     function createListing(
         address nftAddress,
         uint256 tokenId,
@@ -107,6 +115,7 @@ contract NFTMarketplace {
         emit ListingCreated(nftAddress, tokenId, price, msg.sender);
     }
 
+    /// @dev Cancel the listing
     function cancelListing(address nftAddress, uint256 tokenId)
         external
         isListed(nftAddress, tokenId)
@@ -116,6 +125,7 @@ contract NFTMarketplace {
         emit ListingCanceled(nftAddress, tokenId, msg.sender);
     }
 
+    /// @dev Update the Listing
     function updateListing(
         address nftAddress,
         uint256 tokenId,
@@ -126,6 +136,7 @@ contract NFTMarketplace {
         emit ListingUpdated(nftAddress, tokenId, newPrice, msg.sender);
     }
 
+    /// @dev purchase NFT in full
     function purchaseListingFull(address nftAddress, uint256 tokenId)
         external
         payable
@@ -147,6 +158,7 @@ contract NFTMarketplace {
         emit ListingPurchased(nftAddress, tokenId, listing.seller, msg.sender);
     }
 
+    /// @dev Create Listing for bidding
     function createListingBid(
         address nftAddress,
         uint256 tokenId,
@@ -175,6 +187,7 @@ contract NFTMarketplace {
         emit ListingCreated(nftAddress, tokenId, price, msg.sender);
     }
 
+    /// @dev Place a new bid for NFT listing
     function placeBid(
         address nftAddress,
         uint256 tokenId,
@@ -191,6 +204,7 @@ contract NFTMarketplace {
         emit BidPlaced(nftAddress, tokenId, msg.sender, msg.value);
     }
 
+    /// @dev  End bidding on the NFT listing
     function endBidding(address nftAddress, uint256 tokenId)
         external
         isActiveBid(nftAddress, tokenId)
@@ -207,6 +221,7 @@ contract NFTMarketplace {
         );
     }
 
+    /// @dev Purchase the NFT listing as a bid
     function purchaseListingBid(address nftAddress, uint256 tokenId)
         external
         payable

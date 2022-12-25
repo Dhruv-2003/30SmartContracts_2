@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-// TASK ??
+// TASK -
 // the NFT can only be minted or burnt
 // No transfer is allowed for the NFT
 
@@ -35,7 +35,7 @@ contract SBTERC721 is ERC721, ERC721Enumerable, Ownable {
         baseURI = newURI;
     }
 
-    /// to mint the token ID for the DAO user to join the DAO
+    ///@dev to mint the token ID for the DAO user to join the DAO
     /// can be called by anybody , but it will be called in backend just by the DAO members
     /// NFT will be minted only if the user has contriubuted , the option to mint a NFT will be shown but checked first and then only allowed to mint
     function safeMint(address to) public {
@@ -44,9 +44,9 @@ contract SBTERC721 is ERC721, ERC721Enumerable, Ownable {
         _safeMint(to, tokenId);
     }
 
-    // The following functions are overrides required by Solidity.
-    // we will allow to call transfer only when the nft is either minted or burnt
-    // So the to and fro address will be the 0 address
+    /// @dev  The following functions are overrides required by Solidity.
+    /// we will allow to call transfer only when the nft is either minted or burnt
+    /// So the to and fro address will be the 0 address
     function _beforeTokenTransfer(
         address from,
         address to,
@@ -59,7 +59,7 @@ contract SBTERC721 is ERC721, ERC721Enumerable, Ownable {
         super._beforeTokenTransfer(from, to, tokenId);
     }
 
-    /// can be called by the owner of token to exit the DAO
+    ///@dev can be called by the owner of token to exit the DAO
     /// Burns the token ID from the users Account
     function burn(uint256 tokenId) external {
         require(
@@ -69,13 +69,13 @@ contract SBTERC721 is ERC721, ERC721Enumerable, Ownable {
         _burn(tokenId);
     }
 
-    /// function to remove someone from the DAO  , called only by the owner
+    ///@dev function to remove someone from the DAO  , called only by the owner
     /// will burn the token ID from the users account
     function revoke(uint256 tokenId) external onlyOwner {
         _burn(tokenId);
     }
 
-    /// after any token transfer , events are emitted
+    ///@dev after any token transfer , events are emitted
     /// revoke show when the NFT is burnt
     /// attest when NFT is minted
     function _afterTokenTransfer(
