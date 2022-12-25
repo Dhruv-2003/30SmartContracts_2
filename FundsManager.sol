@@ -1,5 +1,13 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
+
+/// TASK
+/// Contract that manages the funds for a organisation
+/// Receive the funds
+/// Withdrawl and transfer only allowed by the Owner
+
+/// Not sure to keep it or not
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract FundsManager is Ownable {

@@ -1,6 +1,10 @@
-// SPDX-License-Identifier: UNLICENSED
-
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
+
+/// Task
+/// Register and maintain a domain service for an address
+/// Add records to the user's domain ID
+/// Fetch the records and mapping when needed
 
 import {StringUtils} from "./libraries/StringUtils.sol";
 

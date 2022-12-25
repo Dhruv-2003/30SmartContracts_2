@@ -1,7 +1,5 @@
-//SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.14;
-
-/// Checked and Tested
+//SPDX-License-Identifier: MIT
+pragma solidity ^0.8.10;
 
 import {ERC721} from "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import {ISuperfluid, ISuperToken, ISuperApp} from "@superfluid-finance/ethereum-contracts/contracts/interfaces/superfluid/ISuperfluid.sol";

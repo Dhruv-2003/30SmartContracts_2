@@ -1,17 +1,20 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
+/// TASK
+/// NFT Can be sent to the contract
+/// Fractionalized tokens are issued against the NFT
+/// NFT can be put on sale
+/// Token holders gets the share for the sale of the NFT
+
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/token/ERC20/ERC20.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/token/ERC721/IERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/access/Ownable.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/token/ERC20/extensions/draft-ERC20Permit.sol";
-
-/// for this contract to accept nft , we need to import a contract that will make this contract an nft holder
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/tree/v4.0.0/contracts/token/ERC721/utils/ERC721Holder.sol";
 
-/// only one nft can be sent for once and contract will hold only one NFT for that time
-/// nft can be sold and purchased by others , so then the token holders will be able to burn the tokens they own
-/// then transfer the eth to holders
+/// for this contract to accept nft , we need to import a contract that will make this contract an nft holder
+
 contract MyToken is ERC20, Ownable, ERC20Permit, ERC721Holder {
     IERC721 public nftCollection;
 

@@ -1,5 +1,14 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
+
+/// Lottery game Contract
+/// Start a lottery game
+/// Enter the Game by paying down the fee
+/// getRandomWinner from an abi encoding formula
+/// pick the winner , winner is awarded and the game ends
+
+/// ALERT -block.timestamp is not recommended to use for randomness
+
 import "@openzeppelin/contracts/access/Ownable.sol";
 
 contract Lottery is Ownable {

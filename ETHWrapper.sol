@@ -1,6 +1,12 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+/// TASK
+/// Acts as a ETH Wrapper
+/// ETH can be deposited and in return ERC20 tokens are minted of an equal value
+/// Withdraw ETH when the ERC20 Tokens are sent back
+/// WETH holds all the traits of an ERC20 token
+
 import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
 
 contract WETH is ERC20 {
