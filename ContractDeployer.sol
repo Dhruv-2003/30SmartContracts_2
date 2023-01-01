@@ -1,6 +1,9 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.10;
 
+/// Tasks
+/// Deploy New Contracts driectly via a function call
+
 contract Deployer {
     A[] public _deployed;
 

@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+/// Task
+/// Constant Product Market Maker
+/// Follow reserve0*reserve1 = k
+
 contract CPAMM {
     // created token contract instance
     IERC20 public immutable token0;
