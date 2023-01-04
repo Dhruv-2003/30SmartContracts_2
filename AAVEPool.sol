@@ -1,6 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
+/// Task
+/// Contract to directly interact with AAVE protocol contracts
+/// Deposit , Borrow , Withdraw and repay functions to be implemented
+
 interface IlendingPool {
     function deposit(
         address asset,

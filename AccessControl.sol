@@ -1,8 +1,10 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.4;
 
-/// this contract will just manage all the roles
-/// we can inherit in the main contract after deploying to control the access and assign particular roles
+/// Task
+/// Manage Roles and their access to the main contract to prevent unauthorized funcitoning of contract
+/// this contract can be inherited to implement the Role and Access Control
+
 contract AccessControl {
     /// mapping from role > account > bool
     mapping(bytes32 => mapping(address => bool)) public roles;

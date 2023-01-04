@@ -6,6 +6,10 @@ pragma solidity ^0.8.7;
 import "@chainlink/contracts/src/v0.8/ConfirmedOwner.sol";
 import "@chainlink/contracts/src/v0.8/VRFV2WrapperConsumerBase.sol";
 
+/// Task
+/// implement Chainlink V2 VRF
+/// Fetch the prices using Chainlink VRF
+
 contract ChainlinkVRF is VRFV2WrapperConsumerBase, ConfirmedOwner {
     /// events that are emitted for the processing of request
     event RequestSent(uint256 requestId, uint32 numWords);
